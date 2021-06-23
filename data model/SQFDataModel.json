@@ -1,0 +1,22 @@
+--Data model for StackQFlow
+
+{
+    question_details:{
+        {
+            Qid: "Q1010", 
+            Question:"A sample Question 1", 
+            upVotes: 20, 
+            downVotes: 5, 
+            userId: "60ac0c990e7b8ad513b1851adf8181a6d9d3f35e" 
+        }
+
+        {
+            Qid: "Q1020", 
+            Question:"A sample Question 2", 
+            upVotes: 11, 
+            downVotes: 1, 
+            userId: "ec7c06739cc8d843fc887ea363f87fdbd69b49de" 
+        }
+    }
+
+}
