@@ -11,9 +11,9 @@
 
 # Week 1
 
-## ER Diagram :
+## Progressive Project Structure :
 
-<img src = "images/ER-diagram.drawio.png" alt="ER diagram">
+<img src = "images/PPS-diagram.drawio.png" alt="ER diagram">
 
 ## User Stories for Week 1
 
