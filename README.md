@@ -45,3 +45,14 @@ COLLECTION: Answers
 - A001    Q001    " "     count     count     "date+time"     U001
 - A002    Q002
 - A003    Q001
+
+ToDo's
+- Login
+- Registration
+- Questions
+- Answers
+- Upload to BitBucket
+- Unit Testing
+- Front End testing
+- Build in Jenkins
+- Dockerize the project
