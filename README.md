@@ -41,7 +41,7 @@ QID	  question	        upVotes	 downVotes	 Timestamp	        closed/open	 UID   
 Q001    "description"    count    counts      time of posting    closed     U001    {A001, A002}
 
 COLLECTION: Answers
-AID     QID     Answer  upVotes downVotes   TimeStamp UID 
-A001    Q001    
+AID     QID     Answer  upVotes downVotes   TimeStamp       UID 
+A001    Q001    " "     count     count     "date+time"     U001
 A002    Q002
 A003    Q001
