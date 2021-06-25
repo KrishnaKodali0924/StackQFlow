@@ -22,8 +22,8 @@ public class User {
 	private String email;
 
 	@Column(name = "password")
-	private double password;
+	private String password;
 
 	@Column(name = "gender")
-	private double gender;
+	private String gender;
 }

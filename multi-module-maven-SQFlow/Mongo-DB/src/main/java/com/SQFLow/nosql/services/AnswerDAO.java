@@ -15,8 +15,8 @@ public class AnswerDAO implements IAnswerDAO {
 	private MongoCollection collection;
 
 	public AnswerDAO() {
-		mongoClient = MongoUtil.mongoUtil();
-		collection = MongoUtil.getCollectionFromDB("teamDB", "answers", Answer.class);
+		mongoClient = MongoUtil.mongoUtilCodedRegistray();
+		collection = MongoUtil.getCollectionFromDB("bitanDB", "answers", Answer.class);
 	}
 
 	@Override

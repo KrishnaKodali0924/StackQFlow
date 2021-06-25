@@ -9,15 +9,17 @@ import com.SQFLow.nosql.entity.Question;
 import com.SQFLow.nosql.util.MongoUtil;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Updates;
 
 public class QuestionDAO implements IQuestionDAO {
 	private MongoClient mongoClient;
-	private MongoCollection collection;
+	private MongoCollection<Question> collection;
 
 	public QuestionDAO() {
-		mongoClient = MongoUtil.mongoUtil();
-		collection = MongoUtil.getCollectionFromDB("teamDB", "questions", Question.class);
+		mongoClient = MongoUtil.mongoUtilCodedRegistray();
+		MongoDatabase bitDB = mongoClient.getDatabase("bitanDB");
+		collection = bitDB.getCollection("questions", Question.class);
 	}
 
 	@Override
@@ -27,7 +29,7 @@ public class QuestionDAO implements IQuestionDAO {
 
 	@Override
 	public Question findById(String qid) {
-		return (Question) collection.find(eq("QID", qid)).first();
+		return collection.find(eq("QID", qid)).first();
 	}
 
 	@Override
