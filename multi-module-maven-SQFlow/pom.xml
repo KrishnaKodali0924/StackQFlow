@@ -33,7 +33,7 @@
   <modules>
   	<module>Mongo-DB</module>
   	<module>Postgres-DB</module>
-    <module>Servlet-work</module>
+    <module>servelet-SQFlow</module>
   </modules>
   
 </project>
