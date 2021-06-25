@@ -17,7 +17,7 @@ public class QuestionDAO implements IQuestionDAO {
 	private MongoCollection collection;
 
 	public QuestionDAO() {
-		mongoClient = MongoUtil.mongoUtil();
+		mongoClient = MongoUtil.mongoUtilCodedRegistray();
 		collection = MongoUtil.getCollectionFromDB("team4DB", "questions", Question.class);
 	}
 
