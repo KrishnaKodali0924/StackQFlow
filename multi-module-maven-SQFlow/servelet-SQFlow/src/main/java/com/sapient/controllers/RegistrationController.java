@@ -1,5 +1,7 @@
 package com.sapient.controllers;
 
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RegistrationController extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		UserDAO userController = new UserDAO();
 		User user = new User();
 		String userName = req.getParameter("user-name");
@@ -28,7 +30,14 @@ public class RegistrationController extends HttpServlet {
 		user.setUserName(userName);
 		user.setGender(gender);
 		user.setPassword(password);
-		log.info("{}", user);
-		userController.addUser(user);
+		resp.setContentType("text/html");
+		if (userController.addUser(user)) {
+			req.getRequestDispatcher("/home-page.html").forward(req, resp);
+		} else {
+			resp.getWriter().println("<p style=\"color:red\">*email id already exist</p>");
+			userController = null;
+			user = null;
+			req.getRequestDispatcher("/web-content/html/registration.jsp").include(req, resp);
+		}
 	}
 }
