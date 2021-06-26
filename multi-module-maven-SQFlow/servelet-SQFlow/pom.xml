@@ -6,7 +6,10 @@
     <groupId>com.SQFlow</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-
+  	<properties>
+		<java.compiler.source>1.8</java.compiler.source>
+		<java.compiler.target>1.8</java.compiler.target>
+	</properties>
   <artifactId>servelet-SQFlow</artifactId>
   <packaging>war</packaging>
 
@@ -23,6 +26,17 @@
 		<version>3.1.0</version>
 		<scope>provided</scope>
 	</dependency>
+	<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.8</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.4.4.Final</version>
+		</dependency>
 
   </dependencies>
 

@@ -1,7 +1,6 @@
 <html>
 <body>
 	<h1>Welcome to My Application!</h1>
-	<a href="./login.html">Login</a>
-	<a href="./registration.html">Registration</a>
+	<a href="./web-content/html/registration.jsp">Registration</a>
 </body>
 </html>

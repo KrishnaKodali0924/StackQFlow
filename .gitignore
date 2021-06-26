@@ -1,7 +1,7 @@
 #Ignore pom property files
-pom.properties
+*/pom.properties
 .project
 .classpath
-/.project
-/.classpath
-/.settings
+*/.project
+*/.classpath
+*/.settings
