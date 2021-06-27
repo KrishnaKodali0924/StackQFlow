@@ -9,50 +9,55 @@ import com.SQFLow.nosql.entity.Question;
 import com.SQFLow.nosql.util.MongoUtil;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Updates;
 
 public class QuestionDAO implements IQuestionDAO {
+
 	private MongoClient mongoClient;
-	private MongoCollection<Question> collection;
+	private MongoCollection<Question> qCollection;
 
 	public QuestionDAO() {
-		mongoClient = MongoUtil.mongoUtilCodedRegistray();
-		MongoDatabase bitDB = mongoClient.getDatabase("bitanDB");
-		collection = bitDB.getCollection("questions", Question.class);
+		mongoClient = MongoUtil.mongoUtil();
+		qCollection = MongoUtil.getCollectionFromDB("teamDB", "questions", Question.class);
 	}
 
 	@Override
 	public void insertOne(Question question) {
-		collection.insertOne(question);
+		long count = qCollection.count();
+		question.setQID("Q" + (count + 1));
+		qCollection.insertOne(question);
+		System.out.println("Inserted");
 	}
 
 	@Override
 	public Question findById(String qid) {
-		return collection.find(eq("QID", qid)).first();
+		return qCollection.find(eq("qID", qid)).first();
 	}
 
 	@Override
 	public Iterable<Question> findQuestion(String uid) {
-		return collection.find(eq("UID", uid)).into(new ArrayList<Question>());
+		return qCollection.find(eq("uID", uid)).into(new ArrayList<Question>());
 	}
 
 	@Override
 	public Iterable<Question> findAll() {
-		return collection.find().into(new ArrayList<Question>());
+		return qCollection.find().into(new ArrayList<Question>());
 	}
 
 	@Override
 	public void addUpVote(String qid) {
-
-		collection.updateMany(eq("QID", qid), Updates.set("upVotes", findById(qid).getUpVotes() + 1))
+		qCollection.updateMany(eq("qID", qid), Updates.set("upVotes", findById(qid).getUpVotes() + 1))
 				.getModifiedCount();
 	}
 
 	@Override
 	public void addDownVote(String qid) {
-		collection.updateMany(eq("QID", qid), Updates.set("downVotes", findById(qid).getDownVotes() + 1))
+		qCollection.updateMany(eq("qID", qid), Updates.set("downVotes", findById(qid).getDownVotes() + 1))
 				.getModifiedCount();
 	}
 
+	@Override
+	public void addAnswer(String qid, String aid) {
+		findById(qid).getAIDList().add(aid);
+	}
 }

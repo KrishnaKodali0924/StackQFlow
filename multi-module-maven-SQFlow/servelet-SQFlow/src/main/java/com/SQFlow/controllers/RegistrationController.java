@@ -19,6 +19,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RegistrationController extends HttpServlet {
 	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		User user = new User();
 		Registration reg = RegistrationCreator.createRegistrationBean(req);
@@ -28,11 +33,11 @@ public class RegistrationController extends HttpServlet {
 		user.setPassword(reg.getPassword());
 		resp.setContentType("text/html");
 		if (RegistrationValidation.isNewUser(user)) {
-			req.getRequestDispatcher("/web-content/html/login.html").forward(req, resp);
+			req.getRequestDispatcher("/web-content/html/login.html").include(req, resp);
 		} else {
 			resp.getWriter().println("<p style=\"color:red\">*email id already exist</p>");
 			user = null;
-			req.getRequestDispatcher("/web-content/html/registration.jsp").include(req, resp);
+			req.getRequestDispatcher("/web-content/html/registration.html").include(req, resp);
 		}
 	}
 }

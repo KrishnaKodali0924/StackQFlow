@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+.search {
+	font-size: 2em;
+	color: black;
+}
+.btn-link {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: #0000EE;
+    padding: 0;
+    text-decoration: underline;
+    font-family: inherit;
+    font-size: inherit;
+}
+input[type=submit] {	
+  height: 20%;
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  white-space: normal;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}

@@ -15,33 +15,37 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
-public class MongoUtil {
-	private MongoUtil() {
+public class MongoUtil{
+	
+	private MongoUtil(){
 	}
 
-	public static MongoClient mongoUtil() {
-		return MongoClients.create(MongoClientSettings.builder()
-				.applyToClusterSettings(builder -> builder.hosts(Arrays.asList(new ServerAddress("localhost", 27017))))
-				.build());
+	public static MongoClient mongoUtil(){
+		
+		CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
+                fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+		
+		MongoClientSettings settings = MongoClientSettings.builder()
+		        .codecRegistry(pojoCodecRegistry)
+		        .build(); 
+		
+		return MongoClients.create(settings);
 	}
 
-	public static MongoClient mongoUtil(String host, int port) {
+	public static MongoClient mongoUtil(String host, int port){
 
 		return MongoClients.create(MongoClientSettings.builder()
 				.applyToClusterSettings(builder -> builder.hosts(Arrays.asList(new ServerAddress(host, port))))
 				.build());
 	}
 
-	public static MongoClient mongoUtilCodedRegistray() {
-		CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
-				fromProviders(PojoCodecProvider.builder().automatic(true).build()));
-
-		MongoClientSettings settings = MongoClientSettings.builder().codecRegistry(pojoCodecRegistry).build();
-
-		return MongoClients.create(settings);
+	public static MongoClient mongoUtilCodedRegistray(){
+		return MongoClients.create(MongoClientSettings.builder()
+				.applyToClusterSettings(builder -> builder.hosts(Arrays.asList(new ServerAddress("localhost", 27017))))
+				.build());
 	}
 
-	public static MongoCollection getCollectionFromDB(String db, String collection, Class clss) {
+	public static MongoCollection getCollectionFromDB(String db, String collection, Class clss){
 
 		MongoDatabase database = mongoUtil().getDatabase(db);
 		return database.getCollection(collection, clss);

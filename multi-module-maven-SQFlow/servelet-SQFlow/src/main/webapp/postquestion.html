@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Post Question</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	</head>
+	<body style="background-color: lightblue">
+	<div style="margin-left: 10%; margin-top: 3%" class"jumbotron">
+	<h1 class="display-3">StackQFlow</h1>
+	</div>
+		<form method = "post" action = "post-question" class = "container" style="margin-top:20%">
+		
+				<label for="title"><h4 class="display-5">Title</h4></label><br>
+			  	<input type="text" name="title" class="form-control-lg">
+			  	<hr>
+			  	<label for="question"><h5 class="display-5">Question</h5></label>
+			  	<textarea id="question" name="question" class="form-control" rows="10"></textarea>
+			  	
+			  	<hr>
+			  	<input type="submit" style="margin-left:80%; width:100px" value="Post" class="btn btn-info">
+		</form>
+	</body>
+</html>

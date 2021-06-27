@@ -11,5 +11,4 @@ public interface IAnswerDAO {
 	void addUpVote(String aid);
 
 	void addDownVote(String aid);
-
 }

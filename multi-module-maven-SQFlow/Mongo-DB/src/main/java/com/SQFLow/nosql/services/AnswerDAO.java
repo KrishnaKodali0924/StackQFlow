@@ -4,44 +4,43 @@ import static com.mongodb.client.model.Filters.eq;
 
 import com.SQFLow.nosql.contracts.IAnswerDAO;
 import com.SQFLow.nosql.entity.Answer;
+import com.SQFLow.nosql.entity.Question;
 import com.SQFLow.nosql.util.MongoUtil;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Updates;
 
-public class AnswerDAO implements IAnswerDAO {
-
+public class AnswerDAO implements IAnswerDAO{
+	
 	private MongoClient mongoClient;
-	private MongoCollection collection;
+	private MongoCollection<Answer> aCollection;
 
 	public AnswerDAO() {
-		mongoClient = MongoUtil.mongoUtilCodedRegistray();
-		collection = MongoUtil.getCollectionFromDB("bitanDB", "answers", Answer.class);
+		mongoClient = MongoUtil.mongoUtil();
+		aCollection = MongoUtil.getCollectionFromDB("teamDB", "answers", Answer.class);
 	}
-
+	
 	@Override
 	public void insertOne(Answer answer) {
-		collection.insertOne(answer);
-
+		 aCollection.insertOne(answer);
 	}
 
 	@Override
 	public Answer findById(String aid) {
-		return (Answer) collection.find(eq("AID", aid)).first();
-
+		return (Answer) aCollection.find(eq("aID", aid)).first();
 	}
 
 	@Override
 	public void addUpVote(String aid) {
-
-		collection.updateMany(eq("AID", aid), Updates.set("upVotes", findById(aid).getUpVotes() + 1))
-				.getModifiedCount();
+		aCollection.updateMany(eq("aID", aid), Updates.set("upVotes", findById(aid).getUpVotes() + 1))
+		.getModifiedCount();
 	}
 
 	@Override
 	public void addDownVote(String aid) {
-		collection.updateMany(eq("AID", aid), Updates.set("downVotes", findById(aid).getDownVotes() + 1))
-				.getModifiedCount();
+		 aCollection.updateMany(eq("aID", aid), Updates.set("downVotes", findById(aid).getDownVotes() + 1))
+		.getModifiedCount();
+		
 	}
-
+	
 }

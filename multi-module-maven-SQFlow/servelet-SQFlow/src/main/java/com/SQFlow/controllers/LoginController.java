@@ -16,7 +16,7 @@ import com.SQFlow.sql.entity.User;
 
 import lombok.extern.slf4j.Slf4j;
 
-@WebServlet("/web-content/html/login")
+@WebServlet("/login")
 @Slf4j
 public class LoginController extends HttpServlet {
 	@Override
@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet {
 		Cookie cookieToProcess = null;
 		for (Cookie cookie : cookies) {
 			// Search cookie you need.
-			if (cookie.getName().equals("UID")) {
+			if (cookie.getName().equals("email")) {
 				cookieToProcess = cookie;
 				break;
 			}
@@ -38,8 +38,8 @@ public class LoginController extends HttpServlet {
 		user.setPassword(login.getPassword());
 		resp.setContentType("text/html");
 		boolean loginValid = LoginValidation.isUserValid(user);
-		if (cookieToProcess != null) {
-			req.getRequestDispatcher("/home-page.html").forward(req, resp);
+		if (cookieToProcess != null && !cookieToProcess.getValue().equals("")) {
+			req.getRequestDispatcher("/index.jsp").forward(req, resp);
 		} else {
 			if (loginValid) {
 				// No such cookie.
@@ -50,10 +50,10 @@ public class LoginController extends HttpServlet {
 				Cookie newCookie = new Cookie(cookieName, cookieValue);
 				newCookie.setPath(contextPath);
 				resp.addCookie(newCookie);
-				req.getRequestDispatcher("/home-page.html").forward(req, resp);
+				req.getRequestDispatcher("index.jsp");
 			} else {
 				resp.getWriter().println("<p style=\"color:red\">*Login Credentials are incorrect</p>");
-				req.getRequestDispatcher("/web-content/html/login.html").include(req, resp);
+				req.getRequestDispatcher("login.html").include(req, resp);
 			}
 		}
 
