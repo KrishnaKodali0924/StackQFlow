@@ -86,14 +86,14 @@
 			<groupId>com.SQFlow</groupId>
 			<artifactId>Postgres-DB</artifactId>
 			<scope>system</scope>
-			<version>4.0.0</version>
+			<version>0.0.1-SNAPSHOT</version>
 			<systemPath>${basedir}\src\main\webapp\WEB-INF\lib\postgres-db.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.SQFlow</groupId>
 			<artifactId>Mongo-DB</artifactId>
 			<scope>system</scope>
-			<version>4.0.0</version>
+			<version>0.0.1-SNAPSHOT</version>
 			<systemPath>${basedir}\src\main\webapp\WEB-INF\lib\mongo-db.jar</systemPath>
 		</dependency>
   </dependencies>
