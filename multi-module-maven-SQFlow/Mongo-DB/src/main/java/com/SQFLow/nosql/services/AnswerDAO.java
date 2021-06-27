@@ -13,22 +13,20 @@ public class AnswerDAO implements IAnswerDAO {
 
 	private MongoClient mongoClient;
 	private MongoCollection collection;
-
+	
 	public AnswerDAO() {
 		mongoClient = MongoUtil.mongoUtilCodedRegistray();
 		collection = MongoUtil.getCollectionFromDB("bitanDB", "answers", Answer.class);
 	}
-
+	
 	@Override
 	public void insertOne(Answer answer) {
 		collection.insertOne(answer);
-
 	}
-
+	
 	@Override
 	public Answer findById(String aid) {
 		return (Answer) collection.find(eq("AID", aid)).first();
-
 	}
 
 	@Override
