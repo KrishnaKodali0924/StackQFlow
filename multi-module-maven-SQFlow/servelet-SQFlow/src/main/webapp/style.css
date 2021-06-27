@@ -3,6 +3,7 @@ body {
   background-color: lightblue;
 }
 h1 {text-align: center;}
+
 a {
     line-height: 2em;
     display: inline-block;
@@ -21,4 +22,9 @@ input[type=submit] {
   white-space: normal;
   word-wrap: break-word;
   box-sizing: border-box;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 1 2em;
 }

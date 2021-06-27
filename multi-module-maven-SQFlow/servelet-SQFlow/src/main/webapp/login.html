@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Login Form</title>
-</head>
-<body>
-
-</body>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Login Page</title>
+		<link rel="stylesheet" href="tablestyle.css">
+	</head>
+	<body style="margin-top:10%; margin-left:35%">
+		<h2>Enter Login Details:</h2>
+		<form method="post" action="login">
+			<table >
+					<tr class="spaceUnder">
+						<td>Email</td>
+						<td><input type="email" name="email"/></td>
+					</tr>
+					<tr align="center" class="spaceUnder">
+						<td>Password</td>
+						<td><input type="password" name="password"/></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Login"/></td>
+						<td><input type="reset" value="Reset"/></td>
+					</tr>
+				</table>
+		</form>
+	</body>
 </html>

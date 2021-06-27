@@ -11,8 +11,6 @@ public interface IQuestionDAO {
 	
 	Iterable<Question> findQuestion(String uid);
 	
-	void addAnswer(String qid, String aid);
-	
 	void addUpVote(String qid);
 
 	void addDownVote(String qid);

@@ -11,13 +11,12 @@ public class Question {
 	private int downVotes;
 	private String UID;
 	private Date timestamp;
-	private List<String> AIDList;
 	
 	public Question() {
 	}
 	
 	public Question(String qID, String title, String question, int upVotes, int downVotes, String status, String uID,
-			Date timestamp, List<String> aIDList) {
+			Date timestamp) {
 		super();
 		QID = qID;
 		this.title = title;
@@ -26,7 +25,7 @@ public class Question {
 		this.downVotes = downVotes;
 		UID = uID;
 		this.timestamp = timestamp;
-		AIDList = aIDList;
+//		AIDList = aIDList;
 	}
 
 
@@ -76,12 +75,6 @@ public class Question {
 	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
-	public List<String> getAIDList() {
-		return AIDList;
-	}
-	public void setAIDList(List<String> aIDList) {
-		AIDList = aIDList;
-	}
 
 	@Override
 	public String toString() {
@@ -89,7 +82,6 @@ public class Question {
 				+ (title != null ? "qTitle=" + title + ", " : "")
 				+ (question != null ? "question=" + question + ", " : "") + "upVotes=" + upVotes + ", downVotes="
 				+ downVotes + ", " 
-				+ (UID != null ? "UID=" + UID + ", " : "") + (timestamp != null ? "timestamp=" + timestamp + ", " : "")
-				+ (AIDList != null ? "AIDList=" + AIDList : "");
+				+ (UID != null ? "UID=" + UID + ", " : "") + (timestamp != null ? "timestamp=" + timestamp + ", " : "");
 	}
 }
