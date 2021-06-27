@@ -1,0 +1,4 @@
+#Ignore pom property files
+pom.properties
+.project
+.classpath
