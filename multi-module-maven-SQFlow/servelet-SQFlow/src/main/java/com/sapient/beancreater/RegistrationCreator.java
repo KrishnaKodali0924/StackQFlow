@@ -13,11 +13,12 @@ public class RegistrationCreator extends HttpServlet {
 
 	}
 
-	public static Registration createLoginBean(HttpServletRequest request) {
+	public static Registration createRegistrationBean(HttpServletRequest request) {
 		Registration reg = new Registration();
 		reg.setUserName(request.getParameter("user-name"));
 		reg.setEmailId(request.getParameter("email"));
 		reg.setPassword(request.getParameter("password"));
+		reg.setGender(request.getParameter("gender"));
 		return reg;
 	}
 

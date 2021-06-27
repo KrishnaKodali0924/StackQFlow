@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.SQFlow.sql.dao.UserDAO;
 import com.SQFlow.sql.entity.User;
+import com.sapient.beancreater.RegistrationCreator;
+import com.sapient.beans.Registration;
+import com.sapient.service.RegistrationValidation;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,24 +20,17 @@ import lombok.extern.slf4j.Slf4j;
 public class RegistrationController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		UserDAO userController = new UserDAO();
 		User user = new User();
-		String userName = req.getParameter("user-name");
-		String email = req.getParameter("email");
-		String password = req.getParameter("password");
-		String gender = req.getParameter("gender");
-		String uid = userController.crypt(email);
-		user.setEmail(email);
-		user.setUserId(uid);
-		user.setUserName(userName);
-		user.setGender(gender);
-		user.setPassword(password);
+		Registration reg = RegistrationCreator.createRegistrationBean(req);
+		user.setEmail(reg.getEmailId());
+		user.setUserName(reg.getUserName());
+		user.setGender(reg.getGender());
+		user.setPassword(reg.getPassword());
 		resp.setContentType("text/html");
-		if (userController.addUser(user)) {
-			req.getRequestDispatcher("/home-page.html").forward(req, resp);
+		if (RegistrationValidation.isNewUser(user)) {
+			req.getRequestDispatcher("/web-content/html/login.html").forward(req, resp);
 		} else {
 			resp.getWriter().println("<p style=\"color:red\">*email id already exist</p>");
-			userController = null;
 			user = null;
 			req.getRequestDispatcher("/web-content/html/registration.jsp").include(req, resp);
 		}
