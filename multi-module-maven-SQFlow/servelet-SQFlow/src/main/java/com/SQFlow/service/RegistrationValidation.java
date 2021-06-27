@@ -1,4 +1,4 @@
-package com.sapient.service;
+package com.SQFlow.service;
 
 import com.SQFlow.sql.dao.UserDAO;
 import com.SQFlow.sql.entity.User;

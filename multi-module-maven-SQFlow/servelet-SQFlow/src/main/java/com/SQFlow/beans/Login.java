@@ -1,4 +1,4 @@
-package com.sapient.beans;
+package com.SQFlow.beans;
 
 import lombok.Data;
 

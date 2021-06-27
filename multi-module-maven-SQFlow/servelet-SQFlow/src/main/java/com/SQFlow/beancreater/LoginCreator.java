@@ -1,9 +1,9 @@
-package com.sapient.beancreater;
+package com.SQFlow.beancreater;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
-import com.sapient.beans.Login;
+import com.SQFlow.beans.Login;
 
 /**
  * Servlet implementation class RegistrationCreator

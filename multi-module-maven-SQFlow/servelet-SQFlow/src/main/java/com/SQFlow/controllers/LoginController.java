@@ -1,4 +1,4 @@
-package com.sapient.controllers;
+package com.SQFlow.controllers;
 
 import java.io.IOException;
 
@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.SQFlow.beancreater.LoginCreator;
+import com.SQFlow.beans.Login;
+import com.SQFlow.service.LoginValidation;
 import com.SQFlow.sql.entity.User;
-import com.sapient.beancreater.LoginCreator;
-import com.sapient.beans.Login;
-import com.sapient.service.LoginValidation;
 
 import lombok.extern.slf4j.Slf4j;
 
