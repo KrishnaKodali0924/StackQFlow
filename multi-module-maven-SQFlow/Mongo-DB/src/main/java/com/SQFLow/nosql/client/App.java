@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.SQFLow.nosql.entity.Question;
+import com.SQFLow.nosql.services.AnswerDAO;
 import com.SQFLow.nosql.services.QuestionDAO;
 import com.SQFLow.nosql.util.MongoUtil;
 import com.mongodb.client.MongoClient;
@@ -13,15 +14,15 @@ import com.mongodb.client.MongoCollection;
 public class App {
 
 	public static void main(String[] args) {
-		List<String> list = new ArrayList<String>();
-		list.add("A001");
-		list.add("A001");
+//		List<String> list = new ArrayList<String>();
+//		list.add("A001");
+//		list.add("A001");
 
 //		Question question = new Question("Q110", "Sample Question-1", "Hello this is Jan", 1, 2, "open", "U003", null, list);
 //		Question question = new Question();
 		
-		QuestionDAO questionDAO= new QuestionDAO();
-		questionDAO.addDownVote("Q1");
+//		QuestionDAO questionDAO= new QuestionDAO();
+//		questionDAO.addDownVote("Q1");
 //		
 //		questionDAO.insertOne(question);
 		
@@ -36,5 +37,9 @@ public class App {
 //		while(iterator.hasNext()) {
 //			System.out.println(iterator.next());
 //		}
+		
+		QuestionDAO questionDAO = new QuestionDAO();
+		AnswerDAO answerDAO = new AnswerDAO();
+				
 	}
 }

@@ -1,9 +1,7 @@
 package com.SQFlow.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.SQFLow.nosql.entity.Question;
 import com.SQFLow.nosql.services.QuestionDAO;
 
-@WebServlet("/uquestions")
-public class UserQuestionsController extends HttpServlet {
+@WebServlet("/post-question")
+public class PostQuestionsController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -26,16 +24,18 @@ public class UserQuestionsController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String title = req.getParameter("title");
+		String question = req.getParameter("question");
+		
 		String uid = "U003";
+		Date date = new Date();
+		
+		Question qDetails = new Question(null, title, question, 0, 0, "open", uid, date, null);
 		
 		QuestionDAO questionDAO = new QuestionDAO();
-		Iterator<Question> uQuestions = questionDAO.findQuestion(uid).iterator();
+		questionDAO.insertOne(qDetails);
 		
-		List<Question> uQuestionsList = new ArrayList<Question>();
-		uQuestions.forEachRemaining(uQuestionsList::add);
-
-		req.setAttribute("uQuestions", uQuestionsList);
-		req.getRequestDispatcher("userquestions.jsp").forward(req, resp);
-		
+		req.getRequestDispatcher("uquestions").forward(req, resp);
 	}
+
 }

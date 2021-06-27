@@ -15,7 +15,7 @@
 		<h1>StackQFlow</h1>
 		<a href="./login.html">Login</a>
 		<a href="./registration.html">Registration</a>
-		<a href="./uquestions"> User Questions</a>
+		<a href="./uquestions" target="_blank"> User Questions</a>
 		
 		<form method="post" action="">
 		<%
@@ -28,7 +28,7 @@
 				out.println("<hr>");
 				out.println("<a class='search' href='show-questions?qid=" + qIterator.getQID() + " 'target='_blank'>" + qIterator.getTitle() + "</a>");	
 			}
-		%>	
+		%>
 		</form>
 	</body>
 </html>
