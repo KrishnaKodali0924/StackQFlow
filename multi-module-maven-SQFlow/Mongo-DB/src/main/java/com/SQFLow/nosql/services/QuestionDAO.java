@@ -6,11 +6,13 @@ import com.SQFLow.nosql.util.MongoUtil;
 import com.mongodb.CommandResult;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Projections;
 import com.mongodb.client.model.Updates;
 
 import static com.mongodb.client.model.Filters.eq;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.bson.Document;
 
@@ -67,4 +69,5 @@ public class QuestionDAO implements IQuestionDAO {
 	public void addAnswer(String qid, String aid) {
 		qCollection.updateOne(eq("qID", qid), Updates.addToSet("aIDList", aid));
 	}
+	
 }

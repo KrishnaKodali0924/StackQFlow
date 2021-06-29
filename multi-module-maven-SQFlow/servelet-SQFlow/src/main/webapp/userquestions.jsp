@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
+		<h1 style="text-align:center">Your Questions</h1>
 		<a href="postquestion.html">Post Question</a>
 		<%List<Question> uQuestions = (ArrayList<Question>)(request.getAttribute("uQuestions")); %>
 		<form method="post" action="">

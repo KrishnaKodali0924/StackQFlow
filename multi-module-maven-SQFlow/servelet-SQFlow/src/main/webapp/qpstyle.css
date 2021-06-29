@@ -1,6 +1,11 @@
 @charset "ISO-8859-1";
 
-textarea {
-  width: 270px;
-  height: 150px;
+body {
+  background-color: lightblue;
 }
+
+h1 {text-align: center;}
+
+label {display:block;}
+
+textarea { display:block;}

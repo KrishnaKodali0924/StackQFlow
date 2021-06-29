@@ -3,77 +3,91 @@ package com.SQFLow.nosql.entity;
 import java.util.Date;
 
 public class Answer {
-	private String aID;
-	private String Answer;
+	private String answerID;
+	private String answer;
+	private String userID;
+	private String questionID;
+	private Date timeStamp;
 	private int upVotes;
-	private int downVotes;
-	private String uID;
-	private String qID;
-	private Date timestamp;
+	private int downVotes; 
 	
-	public Answer() {
-		
+	public Answer() { 
 	}
 	
-	public Answer(String aID, String answer, int upVotes, int downVotes, String uID, String qID, Date timestamp) {
+	public Answer(String answerID, String answer, String userID, String questionID, Date timeStamp, int upVotes,
+			int downVotes) {
 		super();
-		this.aID = aID;
-		Answer = answer;
+		this.answerID = answerID;
+		this.answer = answer;
+		this.userID = userID;
+		this.questionID = questionID;
+		this.timeStamp = timeStamp;
 		this.upVotes = upVotes;
 		this.downVotes = downVotes;
-		this.uID = uID;
-		this.qID = qID;
-		this.timestamp = timestamp;
+	}
+	
+	public String getAnswerID() {
+		return answerID;
 	}
 
-	public String getaID() {
-		return aID;
+	public void setAnswerID(String answerID) {
+		this.answerID = answerID;
 	}
-	public void setaID(String aID) {
-		this.aID = aID;
-	}
+	
 	public String getAnswer() {
-		return Answer;
+		return answer;
 	}
+
 	public void setAnswer(String answer) {
-		Answer = answer;
+		this.answer = answer;
 	}
+
+	public String getUserID() {
+		return userID;
+	}
+
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+
+	public String getQuestionID() {
+		return questionID;
+	}
+
+	public void setQuestionID(String questionID) {
+		this.questionID = questionID;
+	}
+	
+	public Date getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(Date timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+
 	public int getUpVotes() {
 		return upVotes;
 	}
+
 	public void setUpVotes(int upVotes) {
 		this.upVotes = upVotes;
 	}
+
 	public int getDownVotes() {
 		return downVotes;
 	}
+
 	public void setDownVotes(int downVotes) {
 		this.downVotes = downVotes;
 	}
-	public String getuID() {
-		return uID;
-	}
-	public void setuID(String uID) {
-		this.uID = uID;
-	}
-	public String getqID() {
-		return qID;
-	}
-	public void setqID(String qID) {
-		this.qID = qID;
-	}
-	public Date getTimestamp() {
-		return timestamp;
-	}
-	public void setTimestamp(Date timestamp) {
-		this.timestamp = timestamp;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "Answer:" + (aID != null ? "aID=" + aID + ", " : "") + (Answer != null ? "Answer=" + Answer + ", " : "")
-				+ "upVotes=" + upVotes + ", downVotes=" + downVotes + ", " + (uID != null ? "uID=" + uID + ", " : "")
-				+ (qID != null ? "qID=" + qID + ", " : "") + (timestamp != null ? "timestamp=" + timestamp : "");
+		return "Answer: " + (answerID != null ? "answerID=" + answerID + ", " : "")
+				+ (answer != null ? "answer=" + answer + ", " : "") + (userID != null ? "userID=" + userID + ", " : "")
+				+ (questionID != null ? "questionID=" + questionID + ", " : "")
+				+ (timeStamp != null ? "timeStamp=" + timeStamp + ", " : "") + "upVotes=" + upVotes + ", downVotes="
+				+ downVotes;
 	}
-	
 }

@@ -31,9 +31,9 @@
 		
 		<a href="./login.html">Login</a>
 		<a href="./registration.html">Registration</a>
-		<a href="./uquestions" target="_blank"> User Questions</a>
 		
 		<%if(email != null){%>
+			<a href="./uquestions" target="_blank"> User Questions</a>
 			<a href="logout">logout</a>
 		<%}%>
 		
