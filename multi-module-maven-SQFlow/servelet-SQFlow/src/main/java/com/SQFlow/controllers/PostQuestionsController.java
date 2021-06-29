@@ -1,6 +1,7 @@
 package com.SQFlow.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -24,18 +25,29 @@ public class PostQuestionsController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String title = req.getParameter("title");
-		String question = req.getParameter("question");
+		String uid = (String) req.getSession().getAttribute("email");
 		
-		String uid = "U003";
-		Date date = new Date();
-		
-		Question qDetails = new Question(null, title, question, 0, 0, "open", uid, date);
-		
-		QuestionDAO questionDAO = new QuestionDAO();
-		questionDAO.insertOne(qDetails);
-		
-		req.getRequestDispatcher("uquestions").forward(req, resp);
+		resp.setContentType("text/html;charset=UTF-8");
+		if(uid == null) {
+			PrintWriter out = resp.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Login to post a question');");
+			out.println("location='login.html';");
+			out.println("</script>");	
+		}
+		else {
+			String title = req.getParameter("title");
+			String question = req.getParameter("question");
+			
+			Date date = new Date();
+			
+			Question qDetails = new Question(null, title, question, 0, 0, uid, null, date);
+			
+			QuestionDAO questionDAO = new QuestionDAO();
+			questionDAO.insertOne(qDetails);
+			
+			req.getRequestDispatcher("uquestions").forward(req, resp);
+		}
 	}
 
 }

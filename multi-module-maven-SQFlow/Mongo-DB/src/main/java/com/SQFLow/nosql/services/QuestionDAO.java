@@ -12,6 +12,8 @@ import static com.mongodb.client.model.Filters.eq;
 
 import java.util.ArrayList;
 
+import org.bson.Document;
+
 public class QuestionDAO implements IQuestionDAO {
 	
 	private MongoClient mongoClient;
@@ -26,8 +28,12 @@ public class QuestionDAO implements IQuestionDAO {
 	public void insertOne(Question question) {
 		long count = qCollection.count();
 		question.setQID("Q" + (count+1));
-		qCollection.insertOne(question);
-		System.out.println("Inserted");
+		try {
+			qCollection.insertOne(question);
+			System.out.println("Inserted");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -55,5 +61,10 @@ public class QuestionDAO implements IQuestionDAO {
 	public void addDownVote(String qid) {
 		qCollection.updateMany(eq("qID", qid), Updates.set("downVotes", findById(qid).getDownVotes()+1))
 		.getModifiedCount();
+	}
+	
+	@Override
+	public void addAnswer(String qid, String aid) {
+		qCollection.updateOne(eq("qID", qid), Updates.addToSet("aIDList", aid));
 	}
 }

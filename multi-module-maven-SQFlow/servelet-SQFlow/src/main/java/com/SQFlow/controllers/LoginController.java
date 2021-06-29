@@ -36,8 +36,11 @@ public class LoginController extends HttpServlet {
 		user.setPassword(login.getPassword());
 		resp.setContentType("text/html");
 		boolean loginValid = LoginValidation.isUserValid(user);
-		if (session.getAttribute("name") != null)
+		
+		if (session.getAttribute("name") != null) {
+			resp.getWriter().println("<p style=\"color:red\">*Already logged in</p>");
 			req.getRequestDispatcher("index.jsp").forward(req, resp);
+		}
 		else {
 			if (loginValid) {
 				session.setAttribute("email", user.getEmail());

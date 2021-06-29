@@ -13,17 +13,12 @@ import com.mongodb.client.MongoCollection;
 public class App {
 
 	public static void main(String[] args) {
-//		List<String> list = new ArrayList<String>();
-//		list.add("A001");
-//		list.add("A001");
-
-//		Question question = new Question("Q110", "Sample Question-1", "Hello this is Jan", 1, 2, "open", "U003", null, list);
-		Question question = new Question();
 		
-		QuestionDAO questionDAO= new QuestionDAO();
-		
-//		questionDAO.addDownVote("Q1");
+//		Question question = new Question(null, "Sample Question-1", "This is just a sample Question", 0, 0, "agan@gmail.com", null, null);
+//		Question question = new Question();
 //		
+//		QuestionDAO questionDAO= new QuestionDAO();
+		
 //		questionDAO.insertOne(question);
 		
 //		System.out.println(questionDAO.findById("Q5"));
@@ -38,6 +33,9 @@ public class App {
 //			System.out.println(iterator.next());
 //		}
 		
+//		questionDAO.addDownVote("Q6");
+		
+//		questionDAO.addAnswer("Q7", "A001");
 				
 	}
 }

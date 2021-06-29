@@ -26,7 +26,8 @@ public class UserQuestionsController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String uid = "U003";
+		String uid = (String) req.getSession().getAttribute("email");
+		
 		
 		QuestionDAO questionDAO = new QuestionDAO();
 		Iterator<Question> uQuestions = questionDAO.findQuestion(uid).iterator();

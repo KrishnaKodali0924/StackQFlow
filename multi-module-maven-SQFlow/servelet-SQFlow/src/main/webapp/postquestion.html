@@ -3,16 +3,19 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Post Question</title>
-		<link rel="stylesheet" href="qstyle.css">
+		<link rel="stylesheet" href="qpstyle.css">
 	</head>
 	<body>
 		<form method = "post" action = "post-question">
-		
-				<label for="title">Title</label>
-			  	<textarea id="title" name="title" rows="2" cols="50"></textarea><br><br>
+				<div>
+					<label for="title">Title</label>
+				  	<textarea id="title" name="title" rows=2 cols=50 required></textarea><br><br>
+			  	</div>
 			  	
-			  	<label for="question">Question</label>
-			  	<textarea id="question" name="question" rows="10" cols="200"></textarea>
+			  	<div>
+				  	<label for="question">Question</label>
+				  	<textarea id="question" name="question" rows=10 cols=200 required></textarea>
+			  	</div>
 			  	
 			  	<hr>
 			  	<input type="submit" value="Post">

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.SQFLow.nosql.entity.Question;
 import com.SQFLow.nosql.services.QuestionDAO;
 
 @WebServlet("/votes")
@@ -24,15 +23,27 @@ public class VotesController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String qid = req.getParameter("qid");
+		String uid = (String) req.getSession().getAttribute("email");
 		
-		QuestionDAO questionDAO=  new QuestionDAO();
-		if(req.getParameter("upvote") != null)
-			questionDAO.addUpVote(qid);
-		else if(req.getParameter("downvote") != null)
-			questionDAO.addDownVote(qid);
-	
-		req.setAttribute("qdetails", questionDAO.findById(qid));
-		req.getRequestDispatcher("questions.jsp").forward(req, resp);
+		resp.setContentType("text/html;charset=UTF-8");
+		if(uid == null) {
+			PrintWriter out = resp.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Login to vote');");
+			out.println("location='login.html';");
+			out.println("</script>");	
+		}
+		else {
+			String qid = req.getParameter("qid");
+			QuestionDAO questionDAO=  new QuestionDAO();
+			
+			if(req.getParameter("upvote") != null)
+				questionDAO.addUpVote(qid);
+			else if(req.getParameter("downvote") != null)
+				questionDAO.addDownVote(qid);
+		
+			req.setAttribute("qdetails", questionDAO.findById(qid));
+			req.getRequestDispatcher("questions.jsp").forward(req, resp);
+		}
 	}
 }

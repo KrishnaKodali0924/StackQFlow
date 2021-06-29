@@ -14,4 +14,6 @@ public interface IQuestionDAO {
 	void addUpVote(String qid);
 
 	void addDownVote(String qid);
+	
+	void addAnswer(String qid, String aid);
 }

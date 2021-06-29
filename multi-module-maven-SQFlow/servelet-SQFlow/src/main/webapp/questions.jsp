@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Questions</title>
-		<link rel="stylesheet" href="qstyle.css">
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		

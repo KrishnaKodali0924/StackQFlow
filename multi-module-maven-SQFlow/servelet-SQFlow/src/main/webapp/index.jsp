@@ -21,8 +21,9 @@
 		%>
 		
 		<%if(email != null){%>
-			<%UserDAO userDAO = new UserDAO();
-			User user = userDAO.getUserFromEmail(email);
+			<%
+				UserDAO userDAO = new UserDAO();
+				User user = userDAO.getUserFromEmail(email);
 			%>
 			<h2 style="font-family:sans-serif">Hello <%=user.getUserName() %></h2><br>
 		<%}%>
