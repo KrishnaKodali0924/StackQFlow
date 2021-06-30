@@ -1,0 +1,178 @@
+-- Data Model for Trainer 
+
+{
+	personal_details:{
+		name:{
+			first_name: "Naveen Kumar", 
+			last_name:"Srinivas", 
+		}, 
+		dob:"1990-12-20" -- ISO (YYYY-MM-DD)
+		passport_number:"ABC1234", 
+		languages_known:["Kannada", "English", "Tamil"],
+		regType: 'onSite', -- or google, linkedin
+		visa_availble_countries:[
+			{
+				country:"USA", 
+				validity:2020, 
+				type: "B1"
+			}, 
+			{
+				country:"Srilanka", 
+				validity:2022, 
+				type: "testing"
+			}, 
+		],
+		years_of_experience:16, 
+		will_do_content_development: 'Y' -- Yes or No 
+		contact: {
+			address:{
+				street: Cottonpet, 
+				city: Bengaluru, 
+				state:  Karnataka, 
+				country : IN 
+			}, 
+			social_links:{
+				face_book:"facebook.com/naveen", 
+				linkedin:"linkedin.com/naveen", 
+				twitter:"twitter.com/naveen", 
+				youtube: ["youtube.com/naveen","youtube.com/naveen1"]
+				personal_website: "naveenks.com", 
+				blogs: ["http://naveenks.com/firstblog", "http:somesite.com/someblog"]
+			}, 
+			mobile:["+919900 524 255", "+91 9988 0000 88"]
+			-- change 1, Naveen (09-04-2019)
+			email: {
+				primary:"adith.naveen@gmail.com",  -- this email will be used for communication 
+				secondary : "naveen@probits.in" -- we will collect this, optional 
+			}, 
+			indian_tax:{
+				company_name:""
+				GSTN: "", 
+			}, 
+			account_details: {
+				account_no: "12121212", 
+				account_type: "SB', 
+				account_branch: "Majestic", 
+				bank_name: "HDFC", 
+				ifsc: "HDFC232323"
+			}, 
+			qualifications:[
+				qualification:{
+					name:"MCA", 
+					education_institute:"Some College", 
+					years_of_completion:"2019"
+				}, 
+				qualification:{
+					name:"BCA", 
+					education_institute:"SJRC", 
+					years_of_completion:"2017"
+				}, 
+				qualification:{
+					name:"PUC", 
+					education_institute:"RPA", 
+					years_of_completion:"2000"
+				}, 
+				qualification:{
+					name:"PUC", 
+					education_institute:"10 th", 
+					years_of_completion:"1998"
+				}
+				
+			], 
+			about_you:{
+				"i'm a corporate trainer from 10 years"
+			}, 
+			willingto_travel_outside:'Y', 
+			technologies:[
+				technology:{
+					name:"Angular", 
+					experience: 4, 
+					ratings:7.9, --this will be a slider for trainer 
+					-- change 2, Naveen (09-04-2019)  
+					-- Assuming the requirement, that if the trainer is part of multiple companies, 
+					-- if the trainer is from "docere.pro"(special case), the cost shall be shown 
+					-- for all the companies, if it is specific for example in this case 
+					-- for siemens it will be shown only to siemens + docere.pro, and if it is for 
+					-- OVS it will be only OVS + docere.pro. Here we can use company name or 
+					-- company id for the reference. 
+
+					costing : [
+						company : {
+							company_name:"docere.pro"
+							freshers: 8000
+							lasters: 12000
+							project_specific:  15000
+						}, 
+						company : {
+							company_name:"siemens"
+							freshers: 7000
+							lasters: 11000
+							project_specific:  12500, 
+							-- Modified by Naveen added approved field - 09-04-2019 
+							-- the approved status will be Yes / No / Pending 
+							-- where this can be decided by the user who comes 
+							-- from EntityDataModel, if it is Approved we can show it 
+							-- in Green Color, No - Red Color, Pending - which will be 
+							-- default where it will show in Orange Color, so that 
+							-- the approver can have this changed. If the approved status is 
+							-- set to "No" the the text box to be shown, to write the reason 
+							-- and the same is shown for the trainer when he/she logs in 
+							approved: {
+								status: "Yes", 
+								message: "", 
+								by: "userid"
+							} 
+						}, 
+						company : {
+							company_name:"OVS"
+							freshers: 4000
+							lasters: 8000
+							project_specific:  10000, 
+							approved: {
+								status: "No", 
+								message:"Trainer is not Experienced" 
+								by: "userid"
+							}
+						}, 
+					]
+					indexed_Value:1.23, 
+					work_as_consultant: Y/N
+				} 
+			]
+		}, 
+		achievements_certifications:{
+			{
+				title:"Sun Certified", 
+				Year:1999
+			}, 
+			{
+				title:"Inter college debate compititon", 
+				Year:2000
+			}
+		}
+		profile_link:"docere.pro/trainers/profiles/first_name-last_name.docx
+	}
+	trained_companies:[
+		{
+			name: "ProBits Technologies PVt Ltd.,", 
+			location:"Bengaluru"
+		}, 
+		{
+			name: "LnT", 
+			location:"Mysuru"
+		}, 
+		{
+			name: "LnT", 
+			location:"Mysuru"
+		}, 
+	],  
+	references: [ -- optional 
+		reference: {
+			name:"Krishna", 
+			company_name: "ProBits Technologies PVt Ltd.,", 
+			email:"krishna@probits.in",  --optional
+			contact:"28392832" -- optional 
+		}	
+
+	]
+}

@@ -13,4 +13,6 @@ public interface IAnswerDAO {
 	void addDownVote(String aid);
 	
 	Iterable<Answer> getAnswers(String qid);
+	
+	Iterable<Answer> getUserAnswers(String uid);
 }

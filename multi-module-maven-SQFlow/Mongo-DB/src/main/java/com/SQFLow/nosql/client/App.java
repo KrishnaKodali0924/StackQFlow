@@ -64,5 +64,8 @@ public class App {
 		
 //		Iterable<Answer> answers = answerDAO.getAnswers("Q2");
 //		System.out.println(answers);
+		
+//		Iterable<Answer> userAnswers = answerDAO.getUserAnswers("krishna@gmail.com");
+//		System.out.println(userAnswers);
 	}
 }

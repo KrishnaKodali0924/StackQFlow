@@ -56,5 +56,10 @@ public class AnswerDAO implements IAnswerDAO{
 	public Iterable<Answer> getAnswers(String qid) {
 		return aCollection.find(eq("questionID", qid)).into(new ArrayList<Answer>());
 	}
+
+	@Override
+	public Iterable<Answer> getUserAnswers(String uid) {
+		return aCollection.find(eq("userID", uid)).into(new ArrayList<Answer>());
+	}
 	
 }

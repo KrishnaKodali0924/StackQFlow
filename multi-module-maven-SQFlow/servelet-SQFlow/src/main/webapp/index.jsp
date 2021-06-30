@@ -33,7 +33,7 @@
 		<a href="./registration.html">Registration</a>
 		
 		<%if(email != null){%>
-			<a href="./uquestions" target="_blank"> User Questions</a>
+			<a href="userprofile.jsp" target="_blank"> User Profile</a>
 			<a href="logout">logout</a>
 		<%}%>
 		
